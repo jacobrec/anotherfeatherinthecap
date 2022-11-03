@@ -4,7 +4,7 @@ var maxHealth = 12
 var hp = 12
 
 var moveSpeed : int = 250
-var interactDist : int = 20
+var interactDist : int = 10
 var vel = Vector2()
 var facingDir = Vector2()
 
@@ -22,12 +22,8 @@ func _process(delta):
 
 func try_interact():
 	rayCast.cast_to = facingDir * interactDist
-	print_debug("Trying to interact")
 	if rayCast.is_colliding():
-		print_debug("Hit Something")
-		print_debug(rayCast.get_collider())
 		if rayCast.get_collider().has_method("on_interact"):
-			print_debug("And it was interactable")
 			rayCast.get_collider().on_interact(self)
 
 func _physics_process (delta):

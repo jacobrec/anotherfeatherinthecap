@@ -34,6 +34,10 @@ message = "This is a signpost. Thanks for clicking"
 position = Vector2( -87, -56 )
 message = "This signpost has a lot of text. It will need multiple pages to get through it all."
 
+[node name="Signpost3" parent="TilesCollision" instance=ExtResource( 5 )]
+position = Vector2( 1, -57 )
+message = "This message is short"
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -43,3 +47,4 @@ script = ExtResource( 3 )
 
 [connection signal="message" from="TilesCollision/Signpost" to="CanvasLayer/Hud" method="_on_Signpost_message"]
 [connection signal="message" from="TilesCollision/Signpost2" to="CanvasLayer/Hud" method="_on_Signpost_message"]
+[connection signal="message" from="TilesCollision/Signpost3" to="CanvasLayer/Hud" method="_on_Signpost_message"]
