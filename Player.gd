@@ -19,7 +19,7 @@ func _ready():
 	emit_signal("healthChanged", hp, maxHealth)
 
 
-func _process(delta):
+func _process(_delta):
 	rayCast.cast_to = facingDir * interactDist
 	$Line2D.set_point_position(1, facingDir * interactDist)
 	if Input.is_action_just_pressed("action3"):
@@ -41,7 +41,7 @@ func _process(delta):
 		elif facingDir.y == 1:
 			play_animation("SwordDown")
 
-func _physics_process (delta):
+func _physics_process (_delta):
 	vel = Vector2()
 	# inputs
 	if Input.is_action_pressed("move_up"):
@@ -59,7 +59,7 @@ func _physics_process (delta):
 		# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
 	# move the player
-	move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	var _vec = move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	manage_animations()
 
 func play_animation (anim_name):

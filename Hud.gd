@@ -14,7 +14,7 @@ func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 
 
-func _process(delta):
+func _process(_delta):
 	if msg.text != "" and !msg.visible:
 		msgbox.show()
 		msg.show()
@@ -33,8 +33,6 @@ func _on_Signpost_message(text):
 		show_message(text)
 
 func _on_Player_healthChanged(current, maxhealth):
-	print(current, maxhealth)
-
 	delete_children($HeartBox)
 	var scaledHeartSize = 30
 	var heart = Sprite.new()

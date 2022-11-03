@@ -258,27 +258,27 @@ region = Rect2( 120, 0, 30, 18 )
 atlas = ExtResource( 10 )
 region = Rect2( 150, 0, 30, 18 )
 
-[sub_resource type="AtlasTexture" id=63]
+[sub_resource type="AtlasTexture" id=87]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 16, 21 )
 
-[sub_resource type="AtlasTexture" id=64]
+[sub_resource type="AtlasTexture" id=88]
 atlas = ExtResource( 11 )
 region = Rect2( 16, 0, 16, 21 )
 
-[sub_resource type="AtlasTexture" id=65]
+[sub_resource type="AtlasTexture" id=89]
 atlas = ExtResource( 11 )
 region = Rect2( 32, 0, 16, 21 )
 
-[sub_resource type="AtlasTexture" id=66]
+[sub_resource type="AtlasTexture" id=90]
 atlas = ExtResource( 11 )
 region = Rect2( 48, 0, 16, 21 )
 
-[sub_resource type="AtlasTexture" id=67]
+[sub_resource type="AtlasTexture" id=91]
 atlas = ExtResource( 11 )
 region = Rect2( 64, 0, 16, 21 )
 
-[sub_resource type="AtlasTexture" id=68]
+[sub_resource type="AtlasTexture" id=92]
 atlas = ExtResource( 11 )
 region = Rect2( 80, 0, 16, 21 )
 
@@ -358,7 +358,7 @@ animations = [ {
 "name": "SwordUp",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
 "loop": true,
 "name": "SwordRight",
 "speed": 20.0
@@ -382,10 +382,11 @@ cast_to = Vector2( 0, 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
-animation = "SwordDown"
-frame = 2
+animation = "IdleDown"
+frame = 1
 playing = true
 
 [node name="Line2D" type="Line2D" parent="."]
+visible = false
 points = PoolVector2Array( 0, 0, 0, 10 )
 width = 1.917
