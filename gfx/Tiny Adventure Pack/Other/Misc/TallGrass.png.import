@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heart.png-48ed2b678f61b6a29087e3806a9007ce.stex"
+path="res://.import/TallGrass.png-1e5632d6bba05911af4f511841460a59.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/Tiny Adventure Pack/Other/Heart.png"
-dest_files=[ "res://.import/Heart.png-48ed2b678f61b6a29087e3806a9007ce.stex" ]
+source_file="res://gfx/Tiny Adventure Pack/Other/Misc/TallGrass.png"
+dest_files=[ "res://.import/TallGrass.png-1e5632d6bba05911af4f511841460a59.stex" ]
 
 [params]
 

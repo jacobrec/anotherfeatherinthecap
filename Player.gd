@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal healthChanged(currentHealth, maxHealth)
 var maxHealth = 12
 var hp = 12
 
@@ -13,15 +14,16 @@ onready var anim = $AnimatedSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	emit_signal("healthChanged", hp, maxHealth)
 
 
 func _process(delta):
+	rayCast.cast_to = facingDir * interactDist
+	$Line2D.set_point_position(1, facingDir * interactDist)
 	if Input.is_action_just_pressed("action3"):
 		try_interact()
 
 func try_interact():
-	rayCast.cast_to = facingDir * interactDist
 	if rayCast.is_colliding():
 		if rayCast.get_collider().has_method("on_interact"):
 			rayCast.get_collider().on_interact(self)
