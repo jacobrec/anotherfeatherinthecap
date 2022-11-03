@@ -6,5 +6,8 @@ export var message := ""
 func _ready():
 	pass
 
-func on_interact(player): # TODO: this seems a little unreliable
+func on_interact(player):
 	emit_signal("message", message)
+
+func on_sword_hit(player):
+	queue_free()

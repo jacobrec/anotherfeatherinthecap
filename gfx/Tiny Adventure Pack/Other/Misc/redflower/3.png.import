@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Char2_two_attack_down.png-516e2eb0a3ed580657b6a6129dc9cf91.stex"
+path="res://.import/3.png-be119d8c5c00a79175989e7034581523.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/Tiny Adventure Pack/Character/Char_two/Attack/Char2_two_attack_down.png"
-dest_files=[ "res://.import/Char2_two_attack_down.png-516e2eb0a3ed580657b6a6129dc9cf91.stex" ]
+source_file="res://gfx/Tiny Adventure Pack/Other/Misc/redflower/3.png"
+dest_files=[ "res://.import/3.png-be119d8c5c00a79175989e7034581523.stex" ]
 
 [params]
 

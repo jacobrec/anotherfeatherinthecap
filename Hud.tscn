@@ -47,7 +47,7 @@ grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 custom_fonts/font = SubResource( 1 )
-text = "This is a signpost. It has a really long multiline message. It is so long in fact that even with this tiny font size, it still needs to wrap. This is good as it lets me test wrapping. Now I can see how dialog will look."
+text = "Press WASD to move, and press Ctrl to interact with things. Ctrl will also advance text in text boxes. Try it now!"
 autowrap = true
 max_lines_visible = 3
 

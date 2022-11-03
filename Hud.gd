@@ -8,15 +8,17 @@ func show_message(text):
 	msg.lines_skipped = 0
 
 func _ready():
-	msg.text = ""
+	# msg.text = ""
 	msg.hide()
 	msgbox.hide()
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
 
 func _process(delta):
 	if msg.text != "" and !msg.visible:
 		msgbox.show()
 		msg.show()
+		get_tree().paused = true
 	elif Input.is_action_just_pressed("action3"):
 		if msg.text != "":
 			msg.lines_skipped += msg.get_visible_line_count()
@@ -24,6 +26,7 @@ func _process(delta):
 				msg.text = ""
 				msg.hide()
 				msgbox.hide()
+				get_tree().paused = false
 
 func _on_Signpost_message(text):
 	if msg.text == "":

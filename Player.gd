@@ -7,10 +7,12 @@ var hp = 12
 var moveSpeed : int = 250
 var interactDist : int = 10
 var vel = Vector2()
-var facingDir = Vector2()
+var facingDir = Vector2(0, 1)
 
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
+
+var isAttackAnimating = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,12 +23,23 @@ func _process(delta):
 	rayCast.cast_to = facingDir * interactDist
 	$Line2D.set_point_position(1, facingDir * interactDist)
 	if Input.is_action_just_pressed("action3"):
-		try_interact()
-
-func try_interact():
-	if rayCast.is_colliding():
-		if rayCast.get_collider().has_method("on_interact"):
-			rayCast.get_collider().on_interact(self)
+		if rayCast.is_colliding():
+			if rayCast.get_collider().has_method("on_interact"):
+				rayCast.get_collider().on_interact(self)
+	if Input.is_action_just_pressed("action1"):
+		if rayCast.is_colliding():
+			if rayCast.get_collider().has_method("on_sword_hit"):
+				rayCast.get_collider().on_sword_hit(self)
+		isAttackAnimating = true
+		unlock_animation(0.25)
+		if facingDir.x == 1:
+			play_animation("SwordRight")
+		elif facingDir.x == -1:
+			play_animation("SwordLeft")
+		elif facingDir.y == -1:
+			play_animation("SwordUp")
+		elif facingDir.y == 1:
+			play_animation("SwordDown")
 
 func _physics_process (delta):
 	vel = Vector2()
@@ -53,7 +66,9 @@ func play_animation (anim_name):
 	if anim.animation != anim_name:
 		anim.play(anim_name)
 func manage_animations ():
-	if vel.x > 0:
+	if isAttackAnimating:
+		pass
+	elif vel.x > 0:
 		play_animation("WalkRight")
 	elif vel.x < 0:
 		play_animation("WalkLeft")
@@ -69,3 +84,7 @@ func manage_animations ():
 		play_animation("IdleUp")
 	elif facingDir.y == 1:
 		play_animation("IdleDown")
+
+func unlock_animation (timedelay):
+	yield(get_tree().create_timer(timedelay),"timeout")
+	isAttackAnimating = false
