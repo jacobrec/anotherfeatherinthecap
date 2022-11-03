@@ -9,18 +9,24 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[node name="Hud" type="MarginContainer"]
+[node name="Hud" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Textpane" type="MarginContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = -115.0
-margin_right = 1.0
-margin_bottom = -2.0
+margin_left = 10.0
+margin_top = -110.0
+margin_right = -10.0
+margin_bottom = -10.0
+grow_horizontal = 2
+size_flags_horizontal = 2
 
-[node name="Messagebox" type="NinePatchRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 113.0
+[node name="Messagebox" type="NinePatchRect" parent="Textpane"]
+margin_right = 1004.0
+margin_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource( 2 )
@@ -29,7 +35,7 @@ patch_margin_top = 18
 patch_margin_right = 9
 patch_margin_bottom = 20
 
-[node name="Message" type="Label" parent="Messagebox"]
+[node name="Message" type="Label" parent="Textpane/Messagebox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
@@ -44,3 +50,9 @@ custom_fonts/font = SubResource( 1 )
 text = "This is a signpost. It has a really long multiline message. It is so long in fact that even with this tiny font size, it still needs to wrap. This is good as it lets me test wrapping. Now I can see how dialog will look."
 autowrap = true
 max_lines_visible = 3
+
+[node name="HeartBox" type="Control" parent="."]
+anchor_right = 0.039
+anchor_bottom = 0.067
+margin_right = 0.0639992
+margin_bottom = -0.200001

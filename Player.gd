@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 signal healthChanged(currentHealth, maxHealth)
-var maxHealth = 12
+var maxHealth = 4 * 3
 var hp = 12
 
 var moveSpeed : int = 250
