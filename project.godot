@@ -11,8 +11,8 @@ config_version=4
 [application]
 
 config/name="FeatheredCap"
-run/main_scene="res://MainScene.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://src/MainScene.tscn"
+config/icon="res://src/icon.png"
 
 [importer_defaults]
 
@@ -88,4 +88,4 @@ common/enable_pause_aware_picking=true
 
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://src/default_env.tres"

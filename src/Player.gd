@@ -5,7 +5,7 @@ var maxHealth = 4 * 3
 var hp = 12
 
 var moveSpeed : int = 250
-var interactDist : int = 10
+var interactDist : int = 12
 var vel = Vector2()
 var facingDir = Vector2(0, 1)
 
@@ -59,6 +59,11 @@ func _physics_process (_delta):
 	vel = vel.normalized()
 	# move the player
 	var _vec = move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.has_method("on_collide"):
+			collision.collider.on_collide(self)
+
 	manage_animations()
 
 func play_animation (anim_name, lock=false):
@@ -91,3 +96,17 @@ func lock_animation (timedelay):
 	isAttackAnimating = true
 	yield(get_tree().create_timer(timedelay),"timeout")
 	isAttackAnimating = false
+
+
+var is_damage_immune = false
+func damage (attack):
+	if not is_damage_immune:
+		lock_damage(0.3)
+		hp -= 1
+		emit_signal("healthChanged", hp, maxHealth)
+	
+
+func lock_damage (timedelay):
+	is_damage_immune = true
+	yield(get_tree().create_timer(timedelay),"timeout")
+	is_damage_immune = false

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-3013952efb05378239c0b5ec08f70756.stex"
+path="res://.import/blob4.png-1dd41d85c94bf35d3a8fbe0f68db819f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/player.png"
-dest_files=[ "res://.import/player.png-3013952efb05378239c0b5ec08f70756.stex" ]
+source_file="res://gfx/Tiny Adventure Pack/blob/blob4.png"
+dest_files=[ "res://.import/blob4.png-1dd41d85c94bf35d3a8fbe0f68db819f.stex" ]
 
 [params]
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://OverworldTiles.tres" type="TileSet" id=2]
-[ext_resource path="res://CameraFollow.gd" type="Script" id=3]
-[ext_resource path="res://Hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/OverworldTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://src/CameraFollow.gd" type="Script" id=3]
+[ext_resource path="res://src/Hud.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/special_tiles/Signpost.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Hud.gd" type="Script" id=6]
-[ext_resource path="res://MainScene.gd" type="Script" id=7]
+[ext_resource path="res://src/Hud.gd" type="Script" id=6]
+[ext_resource path="res://src/MainScene.gd" type="Script" id=7]
+[ext_resource path="res://src/Blob.tscn" type="PackedScene" id=8]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 7 )
@@ -47,6 +48,9 @@ script = ExtResource( 3 )
 [node name="Hud" parent="HudLayer" instance=ExtResource( 4 )]
 visible = false
 script = ExtResource( 6 )
+
+[node name="Blob" parent="." instance=ExtResource( 8 )]
+position = Vector2( 55, -10 )
 
 [connection signal="message" from="TilesCollision/Signpost" to="HudLayer/Hud" method="_on_Signpost_message"]
 [connection signal="message" from="TilesCollision/Signpost2" to="HudLayer/Hud" method="_on_Signpost_message"]
