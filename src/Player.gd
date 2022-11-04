@@ -102,7 +102,7 @@ var is_damage_immune = false
 func damage (attack):
 	if not is_damage_immune:
 		lock_damage(0.3)
-		hp -= 1
+		hp -= attack
 		emit_signal("healthChanged", hp, maxHealth)
 	
 
