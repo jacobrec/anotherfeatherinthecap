@@ -383,7 +383,7 @@ cast_to = Vector2( 0, 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "IdleDown"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Line2D" type="Line2D" parent="."]
