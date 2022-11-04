@@ -9,6 +9,7 @@
 
 [resource]
 frames = 9
+oneshot = true
 fps = 8.0
 frame_0/texture = ExtResource( 4 )
 frame_1/texture = ExtResource( 1 )

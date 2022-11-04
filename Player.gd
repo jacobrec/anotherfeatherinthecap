@@ -30,39 +30,41 @@ func _process(_delta):
 		if rayCast.is_colliding():
 			if rayCast.get_collider().has_method("on_sword_hit"):
 				rayCast.get_collider().on_sword_hit(self)
-		isAttackAnimating = true
-		unlock_animation(0.25)
 		if facingDir.x == 1:
-			play_animation("SwordRight")
+			play_animation("SwordRight", true)
 		elif facingDir.x == -1:
-			play_animation("SwordLeft")
+			play_animation("SwordLeft", true)
 		elif facingDir.y == -1:
-			play_animation("SwordUp")
+			play_animation("SwordUp", true)
 		elif facingDir.y == 1:
-			play_animation("SwordDown")
+			play_animation("SwordDown", true)
 
 func _physics_process (_delta):
 	vel = Vector2()
 	# inputs
-	if Input.is_action_pressed("move_up"):
-		vel.y -= 1
-		facingDir = Vector2(0, -1)
-	if Input.is_action_pressed("move_down"):
-		vel.y += 1
-		facingDir = Vector2(0, 1)
-	if Input.is_action_pressed("move_left"):
-		vel.x -= 1
-		facingDir = Vector2(-1, 0)
-	if Input.is_action_pressed("move_right"):
-		vel.x += 1
-		facingDir = Vector2(1, 0)
+	if !isAttackAnimating:
+		if Input.is_action_pressed("move_up"):
+			vel.y -= 1
+			facingDir = Vector2(0, -1)
+		if Input.is_action_pressed("move_down"):
+			vel.y += 1
+			facingDir = Vector2(0, 1)
+		if Input.is_action_pressed("move_left"):
+			vel.x -= 1
+			facingDir = Vector2(-1, 0)
+		if Input.is_action_pressed("move_right"):
+			vel.x += 1
+			facingDir = Vector2(1, 0)
 		# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
 	# move the player
 	var _vec = move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	manage_animations()
 
-func play_animation (anim_name):
+func play_animation (anim_name, lock=false):
+	if lock:
+		lock_animation(anim.frames.get_frame_count(anim_name)
+			/ anim.frames.get_animation_speed(anim_name))
 	if anim.animation != anim_name:
 		anim.play(anim_name)
 func manage_animations ():
@@ -85,6 +87,7 @@ func manage_animations ():
 	elif facingDir.y == 1:
 		play_animation("IdleDown")
 
-func unlock_animation (timedelay):
+func lock_animation (timedelay):
+	isAttackAnimating = true
 	yield(get_tree().create_timer(timedelay),"timeout")
 	isAttackAnimating = false
