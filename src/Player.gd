@@ -107,6 +107,8 @@ func damage (attack):
 	if not is_damage_immune:
 		lock_damage(0.3)
 		hp -= attack
+		if hp <= 0:
+			get_tree().change_scene("res://src/screens/game_over.tscn")
 		emit_signal("healthChanged", hp, maxHealth)
 
 func lock_damage (timedelay):
