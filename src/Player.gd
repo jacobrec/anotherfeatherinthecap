@@ -25,11 +25,11 @@ func _process(_delta):
 	$Line2D.set_point_position(1, facingDir * interactDist)
 	if Input.is_action_just_pressed("action3"):
 		if rayCast.is_colliding():
-			if rayCast.get_collider().has_method("on_interact"):
+			if rayCast.get_collider() and rayCast.get_collider().has_method("on_interact"):
 				rayCast.get_collider().on_interact(self)
 	if Input.is_action_just_pressed("action1"):
 		if rayCast.is_colliding():
-			if rayCast.get_collider().has_method("on_sword_hit"):
+			if rayCast.get_collider() and rayCast.get_collider().has_method("on_sword_hit"):
 				rayCast.get_collider().on_sword_hit(self)
 		if facingDir.x == 1:
 			play_animation("SwordRight", true)

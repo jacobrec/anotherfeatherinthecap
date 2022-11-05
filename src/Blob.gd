@@ -21,7 +21,8 @@ func on_collide (player):
 		player.damage(1)
 
 func on_sword_hit(_player):
-	ani.play("dead")
-	is_dead = true
-	yield(get_tree().create_timer(0.5),"timeout")
-	queue_free()
+	if not is_dead:
+		ani.play("dead")
+		is_dead = true
+		yield(get_tree().create_timer(0.5),"timeout")
+		queue_free()
