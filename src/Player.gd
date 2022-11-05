@@ -17,6 +17,7 @@ var isAttackAnimating = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("healthChanged", hp, maxHealth)
+	State.player = self
 
 
 func _process(_delta):
@@ -58,7 +59,7 @@ func _physics_process (_delta):
 		# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
 	# move the player
-	var _vec = move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	vel = move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.has_method("on_collide"):
