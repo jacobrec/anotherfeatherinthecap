@@ -5,10 +5,11 @@ onready var msg = msgbox.get_node("Message")
 
 func show_message(text):
 	msg.text = text
-	msg.lines_skipped = 0
+
 
 func _ready():
 	# msg.text = ""
+	State.textbox = msg
 	msg.hide()
 	msgbox.hide()
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -27,6 +28,7 @@ func _process(_delta):
 				msg.hide()
 				msgbox.hide()
 				get_tree().paused = false
+				msg.lines_skipped = 0
 
 func _on_Signpost_message(text):
 	if msg.text == "":

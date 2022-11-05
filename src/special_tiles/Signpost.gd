@@ -1,6 +1,5 @@
 extends Node2D
 
-signal message(text)
 export var message := ""
 var isbroke = false
 
@@ -9,7 +8,7 @@ func _ready():
 
 func on_interact(_player):
 	if !isbroke:
-		emit_signal("message", message)
+		State.set_message(message)
 
 func on_sword_hit(_player):
 	$Sign.texture = load("res://src/special_tiles/signbreak.tres")
