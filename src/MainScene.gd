@@ -10,7 +10,5 @@ extends Node2D
 func _ready():
 	$HudLayer.get_node("Hud").show()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process (_delta):
+	pass
