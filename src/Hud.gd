@@ -34,11 +34,11 @@ func _on_Signpost_message(text):
 
 func _on_Player_healthChanged(current, maxhealth):
 	delete_children($HeartBox)
-	var scaledHeartSize = 30
+
 	var heart = Sprite.new()
 	heart.texture = load("res://gfx/Tiny Adventure Pack/Other/Heart.png")
-	heart.scale = Vector2(8, 8)
-
+	heart.scale = Vector2(3, 3)
+	var scaledHeartSize = heart.texture.get_width() * heart.scale.x / 2 + 1
 	var heartCount = 0
 	for i in range(0, current/4):
 		heart.position = Vector2(
