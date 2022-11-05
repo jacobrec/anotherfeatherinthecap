@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
 signal healthChanged(currentHealth, maxHealth)
+signal goldChanged(newGold)
+
 var maxHealth = 4 * 3
 var hp = 12
+var gold = 0
 
 var moveSpeed : int = 250
 var interactDist : int = 12
@@ -105,9 +108,12 @@ func damage (attack):
 		lock_damage(0.3)
 		hp -= attack
 		emit_signal("healthChanged", hp, maxHealth)
-	
 
 func lock_damage (timedelay):
 	is_damage_immune = true
 	yield(get_tree().create_timer(timedelay),"timeout")
 	is_damage_immune = false
+
+func giveGold(amount):
+	gold += amount
+	emit_signal("goldChanged", gold)

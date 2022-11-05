@@ -6,7 +6,9 @@ onready var msg = msgbox.get_node("Message")
 func show_message(text):
 	msg.text = text
 
-
+func _on_Player_goldChanged(newGold):
+	$Coins.get_node("Label").text = str(newGold)
+	
 func _ready():
 	# msg.text = ""
 	State.textbox = msg
@@ -78,3 +80,6 @@ static func delete_children(node):
 	for n in node.get_children():
 		node.remove_child(n)
 		n.queue_free()
+
+
+

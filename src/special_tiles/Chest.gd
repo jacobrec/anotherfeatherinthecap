@@ -10,3 +10,4 @@ func on_interact(_player):
 
 func _on_AnimatedSprite_animation_finished():
 	State.set_message("You recieved " + str(gold) + " gold!")
+	State.player.giveGold(gold)

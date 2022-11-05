@@ -72,4 +72,5 @@ script = ExtResource( 6 )
 [node name="Blob" parent="." instance=ExtResource( 8 )]
 position = Vector2( 308, -3 )
 
+[connection signal="goldChanged" from="Player" to="HudLayer/Hud" method="_on_Player_goldChanged"]
 [connection signal="healthChanged" from="Player" to="HudLayer/Hud" method="_on_Player_healthChanged"]
