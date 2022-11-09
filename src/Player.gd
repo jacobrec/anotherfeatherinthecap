@@ -109,6 +109,8 @@ func damage (attack):
 		hp -= attack
 		if hp <= 0:
 			get_tree().change_scene("res://src/screens/game_over.tscn")
+		if hp > maxHealth:
+			hp = maxHealth
 		emit_signal("healthChanged", hp, maxHealth)
 
 func lock_damage (timedelay):
