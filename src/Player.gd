@@ -21,6 +21,7 @@ var isAttackAnimating = false
 func _ready():
 	emit_signal("healthChanged", hp, maxHealth)
 	State.player = self
+	load("res://src/utils/Shadow.gd").create_shadow($AnimatedSprite)
 
 
 func _process(_delta):
