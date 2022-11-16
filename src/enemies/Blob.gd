@@ -17,7 +17,8 @@ func _physics_process (_delta): # TODO: Add a leap towards player
 		var _vec = move_and_slide(vel * moveSpeed, Vector2.ZERO)
 
 func _process(_delta):
-	Shadow.set_elevation($AnimatedSprite, elevation)
+	if not is_dead:
+		Shadow.set_elevation($AnimatedSprite, elevation)
 
 func on_collide (player):
 	if not is_dead:
@@ -27,5 +28,5 @@ func on_sword_hit(_player):
 	if not is_dead:
 		$AnimatedSprite.play("dead")
 		is_dead = true
-		yield(get_tree().create_timer(0.5),"timeout")
+		yield(get_tree().create_timer(1),"timeout")
 		queue_free()
