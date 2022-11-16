@@ -20,6 +20,12 @@ static func get_width(sprite):
 	else:
 		return sprite.texture.get_width()
 
+static func set_elevation(sprite, elevation):
+	var shadow = sprite.get_node("shadow")
+	var twidth = get_width(sprite)
+	var dynHeight = twidth / 2
+	shadow.offset.y = (5.5/8 + elevation) * dynHeight / shadow.scale.y
+
 static func create_shadow(sprite):
 	var sizeup = 1.0 / 3
 	var imageTexture = ImageTexture.new()
@@ -37,6 +43,7 @@ static func create_shadow(sprite):
 	imageTexture.create_from_image(dynImage)
 
 	var shadow = Sprite.new()
+	shadow.set_name("shadow")
 	shadow.scale.x = sizeup
 	shadow.scale.y = sizeup
 	shadow.texture = imageTexture
