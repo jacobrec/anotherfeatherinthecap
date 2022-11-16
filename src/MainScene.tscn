@@ -80,9 +80,6 @@ current = true
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
