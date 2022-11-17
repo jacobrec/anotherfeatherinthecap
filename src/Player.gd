@@ -64,7 +64,8 @@ func _physics_process (_delta):
 		# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
 	# move the player
-	vel = move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	# dont update velocity to prevent sliding around rounded obsticals
+	var _vel = move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.has_method("on_collide"):
