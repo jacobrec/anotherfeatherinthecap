@@ -15,6 +15,7 @@ var facingDir = Vector2(0, 1)
 onready var anim = $AnimatedSprite
 
 var isAttackAnimating = false
+var is_shielding = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,12 +26,14 @@ func _ready():
 
 func _process(_delta):
 	$SwordArea.rotation = facingDir.angle() - PI/2
+	$ShieldArea.rotation = facingDir.angle() - PI/2
+	is_shielding = false
 	if Input.is_action_just_pressed("action3"):
 		var collisions = $SwordArea.get_overlapping_bodies()
 		for collided in collisions:
 			if collided.has_method("on_interact"):
 				collided.on_interact(self)
-	if Input.is_action_just_pressed("action1"):
+	elif Input.is_action_just_pressed("action1"):
 		var collisions = $SwordArea.get_overlapping_bodies()
 		for collided in collisions:
 			print_debug(collided)
@@ -44,6 +47,8 @@ func _process(_delta):
 			play_animation("SwordUp", true)
 		elif facingDir.y == 1:
 			play_animation("SwordDown", true)
+	elif Input.is_action_pressed("action2"):
+		is_shielding = true
 
 func _physics_process (_delta):
 	vel = Vector2()
@@ -82,6 +87,23 @@ func play_animation (anim_name, lock=false):
 func manage_animations ():
 	if isAttackAnimating:
 		pass
+	elif is_shielding:
+		if vel.x > 0:
+			play_animation("ShieldWalkRight")
+		elif vel.x < 0:
+			play_animation("ShieldWalkLeft")
+		elif vel.y < 0:
+			play_animation("ShieldWalkUp")
+		elif vel.y > 0:
+			play_animation("ShieldWalkDown")
+		elif facingDir.x == 1:
+			play_animation("ShieldIdleRight")
+		elif facingDir.x == -1:
+			play_animation("ShieldIdleLeft")
+		elif facingDir.y == -1:
+			play_animation("ShieldIdleUp")
+		elif facingDir.y == 1:
+			play_animation("ShieldIdleDown")
 	elif vel.x > 0:
 		play_animation("WalkRight")
 	elif vel.x < 0:
@@ -106,6 +128,11 @@ func lock_animation (timedelay):
 
 
 var is_damage_immune = false
+func damage_shielded (attack, incoming_body):
+	if is_shielding and $ShieldArea.overlaps_body(incoming_body):
+		return false
+	damage(attack)
+	return true
 func damage (attack):
 	if not is_damage_immune:
 		lock_damage(0.3)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=113 format=2]
 
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/idle.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -526,6 +526,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=196]
+extents = Vector2( 10, 4.5 )
+
 [node name="Player" type="KinematicBody2D"]
 z_index = 10
 script = ExtResource( 2 )
@@ -537,15 +540,16 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "ShieldIdleDown"
-frame = 2
+frame = 5
 playing = true
 
 [node name="SwordArea" type="Area2D" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="SwordArea"]
-visible = false
-color = Color( 1, 1, 1, 0.376471 )
-polygon = PoolVector2Array( 0, 0, 11, 4, 8, 12, 4, 15, -4, 15, -8, 12, -11, 4, 0, 0 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordArea"]
 polygon = PoolVector2Array( 0, 0, 11, 4, 8, 12, 4, 15, -4, 15, -8, 12, -11, 4, 0, 0 )
+
+[node name="ShieldArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea"]
+position = Vector2( 0, 5.5 )
+shape = SubResource( 196 )

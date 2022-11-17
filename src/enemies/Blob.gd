@@ -22,7 +22,10 @@ func _process(_delta):
 
 func on_collide (player):
 	if not is_dead:
-		player.damage(1)
+		if player.damage_shielded(1, self):
+			pass
+		else: # Played shielded, bounce back
+			pass # TODO: use same leap as attack
 
 func on_sword_hit(_player):
 	if not is_dead:
