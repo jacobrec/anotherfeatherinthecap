@@ -6,7 +6,7 @@
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/Walk/Char2_walk_right.png" type="Texture" id=7]
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/Walk/Char2_walk_up.png" type="Texture" id=8]
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/Walk/Char2_walk_left.png" type="Texture" id=9]
-[ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/attack_sheet.png" type="Texture" id=13]
+[ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/attack.png" type="Texture" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0
@@ -338,7 +338,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "IdleDown"
-frame = 5
+frame = 3
 playing = true
 
 [node name="SwordArea" type="Area2D" parent="."]
