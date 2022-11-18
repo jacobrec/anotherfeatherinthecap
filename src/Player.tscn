@@ -540,7 +540,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "ShieldIdleDown"
-frame = 5
+frame = 1
 playing = true
 
 [node name="SwordArea" type="Area2D" parent="."]

@@ -6,6 +6,8 @@ signal goldChanged(newGold)
 var maxHealth = 4 * 3
 var hp = 12
 var gold = 0
+var equipped_1 = Constants.Equipment.Sword
+var equipped_2 = Constants.Equipment.Shield
 
 var moveSpeed : int = 250
 var interactDist : int = 12
@@ -34,21 +36,32 @@ func _process(_delta):
 			if collided.has_method("on_interact"):
 				collided.on_interact(self)
 	elif Input.is_action_just_pressed("action1"):
-		var collisions = $SwordArea.get_overlapping_bodies()
-		for collided in collisions:
-			print_debug(collided)
-			if collided.has_method("on_sword_hit"):
-				collided.on_sword_hit(self)
-		if facingDir.x == 1:
-			play_animation("SwordRight", true)
-		elif facingDir.x == -1:
-			play_animation("SwordLeft", true)
-		elif facingDir.y == -1:
-			play_animation("SwordUp", true)
-		elif facingDir.y == 1:
-			play_animation("SwordDown", true)
+		action(equipped_1, true)
+	elif Input.is_action_pressed("action1"):
+		action(equipped_1, false)
+	elif Input.is_action_just_pressed("action2"):
+		action(equipped_2, true)
 	elif Input.is_action_pressed("action2"):
-		is_shielding = true
+		action(equipped_2, false)
+
+func action(act, just):
+	match [act, just]:
+		[Constants.Equipment.Sword, true]:
+			var collisions = $SwordArea.get_overlapping_bodies()
+			for collided in collisions:
+				print_debug(collided)
+				if collided.has_method("on_sword_hit"):
+					collided.on_sword_hit(self)
+			if facingDir.x == 1:
+				play_animation("SwordRight", true)
+			elif facingDir.x == -1:
+				play_animation("SwordLeft", true)
+			elif facingDir.y == -1:
+				play_animation("SwordUp", true)
+			elif facingDir.y == 1:
+				play_animation("SwordDown", true)
+		[Constants.Equipment.Shield, _]:
+			is_shielding = true
 
 func _physics_process (_delta):
 	vel = Vector2()

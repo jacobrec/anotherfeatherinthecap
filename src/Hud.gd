@@ -83,3 +83,37 @@ static func delete_children(node):
 
 
 
+func _on_SwordButton_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		equip(Constants.Equipment.Sword, event)
+func _on_ShieldButton_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		equip(Constants.Equipment.Shield, event)
+func _on_BoomerangButton_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		equip(Constants.Equipment.Boomarang, event)
+func _on_BowButton_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		equip(Constants.Equipment.Bow, event)
+func _on_BombButton_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		equip(Constants.Equipment.Bomb, event)
+
+onready var frames = [
+	null,
+	$ItemSelect.get_node("SwordButton").get_node("EquipmentFrame"),
+	$ItemSelect.get_node("ShieldButton").get_node("EquipmentFrame"),
+	$ItemSelect.get_node("BowButton").get_node("EquipmentFrame"),
+	$ItemSelect.get_node("BoomerangButton").get_node("EquipmentFrame"),
+	$ItemSelect.get_node("BombButton").get_node("EquipmentFrame"),
+]
+
+func equip(item, event):
+	if event.button_index == BUTTON_LEFT:
+		frames[State.player.equipped_1].play("item")
+		State.player.equipped_1 = item
+		frames[item].play("item1")
+	elif event.button_index == BUTTON_RIGHT:
+		frames[State.player.equipped_2].play("item")
+		State.player.equipped_2 = item
+		frames[item].play("item2")
