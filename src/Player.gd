@@ -60,6 +60,15 @@ func action(act, just):
 				play_animation("SwordUp", true)
 			elif facingDir.y == 1:
 				play_animation("SwordDown", true)
+		[Constants.Equipment.Bow, true]:
+			if facingDir.x == 1:
+				play_animation("BowRight", true)
+			elif facingDir.x == -1:
+				play_animation("BowLeft", true)
+			elif facingDir.y == -1:
+				play_animation("BowUp", true)
+			elif facingDir.y == 1:
+				play_animation("BowDown", true)
 		[Constants.Equipment.Shield, _]:
 			is_shielding = true
 
