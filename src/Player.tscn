@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=188 format=2]
 
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/idle.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/shield_walk.png" type="Texture" id=4]
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/shield_idle.png" type="Texture" id=5]
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/bow.png" type="Texture" id=6]
+[ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/carry_idle.png" type="Texture" id=7]
+[ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/carry_walk.png" type="Texture" id=8]
 [ext_resource path="res://gfx/Tiny Adventure Pack/Character/Char_two/attack.png" type="Texture" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -492,6 +494,198 @@ region = Rect2( 64, 18, 16, 18 )
 atlas = ExtResource( 6 )
 region = Rect2( 80, 18, 16, 18 )
 
+[sub_resource type="AtlasTexture" id=221]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=222]
+atlas = ExtResource( 8 )
+region = Rect2( 16, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=223]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=224]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=225]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=226]
+atlas = ExtResource( 8 )
+region = Rect2( 80, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=227]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=228]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=229]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=230]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=231]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=232]
+atlas = ExtResource( 7 )
+region = Rect2( 80, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=233]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=234]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=235]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=236]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=237]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=238]
+atlas = ExtResource( 7 )
+region = Rect2( 80, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=239]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=240]
+atlas = ExtResource( 8 )
+region = Rect2( 16, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=241]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=242]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=243]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=244]
+atlas = ExtResource( 8 )
+region = Rect2( 80, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=245]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=246]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=247]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=248]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=249]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=250]
+atlas = ExtResource( 7 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=251]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 51, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=252]
+atlas = ExtResource( 8 )
+region = Rect2( 16, 51, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=253]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 51, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=254]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 51, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=255]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 51, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=256]
+atlas = ExtResource( 8 )
+region = Rect2( 80, 51, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=257]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=258]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=259]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=260]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=261]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=262]
+atlas = ExtResource( 7 )
+region = Rect2( 80, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=263]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=264]
+atlas = ExtResource( 8 )
+region = Rect2( 16, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=265]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=266]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=267]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=268]
+atlas = ExtResource( 8 )
+region = Rect2( 80, 34, 16, 17 )
+
 [sub_resource type="AtlasTexture" id=117]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
@@ -632,6 +826,46 @@ animations = [ {
 "name": "BowLeft",
 "speed": 15.0
 }, {
+"frames": [ SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ) ],
+"loop": true,
+"name": "CarryWalkLeft",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 227 ), SubResource( 228 ), SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ) ],
+"loop": true,
+"name": "CarryIdleUp",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 233 ), SubResource( 234 ), SubResource( 235 ), SubResource( 236 ), SubResource( 237 ), SubResource( 238 ) ],
+"loop": true,
+"name": "CarryIdleRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 239 ), SubResource( 240 ), SubResource( 241 ), SubResource( 242 ), SubResource( 243 ), SubResource( 244 ) ],
+"loop": true,
+"name": "CarryWalkDown",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 245 ), SubResource( 246 ), SubResource( 247 ), SubResource( 248 ), SubResource( 249 ), SubResource( 250 ) ],
+"loop": true,
+"name": "CarryIdleDown",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 251 ), SubResource( 252 ), SubResource( 253 ), SubResource( 254 ), SubResource( 255 ), SubResource( 256 ) ],
+"loop": true,
+"name": "CarryWalkUp",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 257 ), SubResource( 258 ), SubResource( 259 ), SubResource( 260 ), SubResource( 261 ), SubResource( 262 ) ],
+"loop": true,
+"name": "CarryIdleLeft",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 263 ), SubResource( 264 ), SubResource( 265 ), SubResource( 266 ), SubResource( 267 ), SubResource( 268 ) ],
+"loop": true,
+"name": "CarryWalkRight",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 119 ), SubResource( 118 ), SubResource( 117 ) ],
 "loop": true,
 "name": "IdleDown",
@@ -658,7 +892,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "IdleDown"
-frame = 2
+frame = 4
 playing = true
 
 [node name="SwordArea" type="Area2D" parent="."]

@@ -16,6 +16,7 @@ var facingDir = Vector2(0, 1)
 
 onready var anim = $AnimatedSprite
 
+var holding = null
 var isAttackAnimating = false
 var is_shielding = false
 var Arrow = load("res://src/Arrow.tscn")
@@ -112,7 +113,6 @@ func _physics_process (_delta):
 		var collision = get_slide_collision(i)
 		if collision.collider.has_method("on_collide"):
 			collision.collider.on_collide(self)
-
 	manage_animations()
 
 func play_animation (anim_name, lock=false):
@@ -121,42 +121,33 @@ func play_animation (anim_name, lock=false):
 			/ anim.frames.get_animation_speed(anim_name))
 	if anim.animation != anim_name:
 		anim.play(anim_name)
+
 func manage_animations ():
 	if isAttackAnimating:
 		pass
 	elif is_shielding:
-		if vel.x > 0:
-			play_animation("ShieldWalkRight")
-		elif vel.x < 0:
-			play_animation("ShieldWalkLeft")
-		elif vel.y < 0:
-			play_animation("ShieldWalkUp")
-		elif vel.y > 0:
-			play_animation("ShieldWalkDown")
-		elif facingDir.x == 1:
-			play_animation("ShieldIdleRight")
-		elif facingDir.x == -1:
-			play_animation("ShieldIdleLeft")
-		elif facingDir.y == -1:
-			play_animation("ShieldIdleUp")
-		elif facingDir.y == 1:
-			play_animation("ShieldIdleDown")
-	elif vel.x > 0:
-		play_animation("WalkRight")
-	elif vel.x < 0:
-		play_animation("WalkLeft")
-	elif vel.y < 0:
-		play_animation("WalkUp")
-	elif vel.y > 0:
-		play_animation("WalkDown")
-	elif facingDir.x == 1:
-		play_animation("IdleRight")
+		play_walkidletype_animation("Shield")
+	elif holding:
+		play_walkidletype_animation("Carry")
+	else:
+		play_walkidletype_animation("")
+
+func play_walkidletype_animation(animation):
+	if vel.x != 0 || vel.y != 0:
+		play_directional_animation(animation + "Walk")
+	else:
+		play_directional_animation(animation + "Idle")
+
+func play_directional_animation(animation):
+	if facingDir.x == 1:
+		play_animation(animation + "Right")
 	elif facingDir.x == -1:
-		play_animation("IdleLeft")
+		play_animation(animation + "Left")
 	elif facingDir.y == -1:
-		play_animation("IdleUp")
+		play_animation(animation + "Up")
 	elif facingDir.y == 1:
-		play_animation("IdleDown")
+		play_animation(animation + "Down")
+
 
 func lock_animation (timedelay):
 	isAttackAnimating = true
