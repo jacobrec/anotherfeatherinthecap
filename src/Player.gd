@@ -5,9 +5,9 @@ signal goldChanged(newGold)
 
 var maxHealth = 4 * 3
 var hp = 12
-var gold = 0
+var gold = 10
 var equipped_1 = Constants.Equipment.Sword
-var equipped_2 = Constants.Equipment.Shield
+var equipped_2 = Constants.Equipment.Bomb
 
 var moveSpeed : int = 250
 var interactDist : int = 12
@@ -18,11 +18,13 @@ onready var anim = $AnimatedSprite
 
 var isAttackAnimating = false
 var is_shielding = false
+var Arrow = load("res://src/Arrow.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("healthChanged", hp, maxHealth)
 	State.player = self
+	giveGold(0)
 	load("res://src/utils/Shadow.gd").create_shadow($AnimatedSprite)
 
 
@@ -45,32 +47,45 @@ func _process(_delta):
 		action(equipped_2, false)
 
 func action(act, just):
-	match [act, just]:
-		[Constants.Equipment.Sword, true]:
-			var collisions = $SwordArea.get_overlapping_bodies()
-			for collided in collisions:
-				print_debug(collided)
-				if collided.has_method("on_sword_hit"):
-					collided.on_sword_hit(self)
-			if facingDir.x == 1:
-				play_animation("SwordRight", true)
-			elif facingDir.x == -1:
-				play_animation("SwordLeft", true)
-			elif facingDir.y == -1:
-				play_animation("SwordUp", true)
-			elif facingDir.y == 1:
-				play_animation("SwordDown", true)
-		[Constants.Equipment.Bow, true]:
-			if facingDir.x == 1:
-				play_animation("BowRight", true)
-			elif facingDir.x == -1:
-				play_animation("BowLeft", true)
-			elif facingDir.y == -1:
-				play_animation("BowUp", true)
-			elif facingDir.y == 1:
-				play_animation("BowDown", true)
-		[Constants.Equipment.Shield, _]:
-			is_shielding = true
+	if !isAttackAnimating:
+		match [act, just]:
+			[Constants.Equipment.Sword, true]:
+				var collisions = $SwordArea.get_overlapping_bodies()
+				for collided in collisions:
+					print_debug(collided)
+					if collided.has_method("on_sword_hit"):
+						collided.on_sword_hit(self)
+				if facingDir.x == 1:
+					play_animation("SwordRight", true)
+				elif facingDir.x == -1:
+					play_animation("SwordLeft", true)
+				elif facingDir.y == -1:
+					play_animation("SwordUp", true)
+				elif facingDir.y == 1:
+					play_animation("SwordDown", true)
+			[Constants.Equipment.Bow, true]:
+				var arrow = Arrow.instance()
+				arrow.z_index = z_index + 1
+				if facingDir.x == 1:
+					play_animation("BowRight", true)
+					arrow.direction =  Vector2(1, 0)
+				elif facingDir.x == -1:
+					play_animation("BowLeft", true)
+					arrow.direction =  Vector2(-1, 0)
+				elif facingDir.y == -1:
+					play_animation("BowUp", true)
+					arrow.direction =  Vector2(0, -1)
+					arrow.z_index = z_index - 2
+				elif facingDir.y == 1:
+					play_animation("BowDown", true)
+					arrow.direction =  Vector2(0, 1)
+				arrow.position = position
+				arrow.position.y += 5
+				if gold > 0:
+					giveGold(-1)
+					get_parent().add_child(arrow)
+			[Constants.Equipment.Shield, _]:
+				is_shielding = true
 
 func _physics_process (_delta):
 	vel = Vector2()

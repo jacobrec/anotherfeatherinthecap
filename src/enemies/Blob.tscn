@@ -57,6 +57,7 @@ animations = [ {
 radius = 5.0
 
 [node name="Blob" type="KinematicBody2D"]
+collision_layer = 5
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
