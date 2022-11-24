@@ -892,7 +892,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "IdleDown"
-frame = 4
+frame = 5
 playing = true
 
 [node name="SwordArea" type="Area2D" parent="."]

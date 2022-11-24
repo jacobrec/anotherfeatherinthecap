@@ -5,7 +5,7 @@ signal goldChanged(newGold)
 
 var maxHealth = 4 * 3
 var hp = 12
-var gold = 10
+var gold = 100
 var equipped_1 = Constants.Equipment.Sword
 var equipped_2 = Constants.Equipment.Bomb
 
@@ -20,6 +20,7 @@ var holding = null
 var isAttackAnimating = false
 var is_shielding = false
 var Arrow = load("res://src/Arrow.tscn")
+var Bomb = load("res://src/Bomb.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,13 +40,34 @@ func _process(_delta):
 			if collided.has_method("on_interact"):
 				collided.on_interact(self)
 	elif Input.is_action_just_pressed("action1"):
-		action(equipped_1, true)
+		if holding:
+			place_or_throw(false)
+		else:
+			action(equipped_1, true)
 	elif Input.is_action_pressed("action1"):
 		action(equipped_1, false)
 	elif Input.is_action_just_pressed("action2"):
-		action(equipped_2, true)
+		if holding:
+			place_or_throw(true)
+		else:
+			action(equipped_2, true)
 	elif Input.is_action_pressed("action2"):
 		action(equipped_2, false)
+
+func place_or_throw(isThrow):
+	var rock = holding
+	holding = null
+	remove_child(rock)
+	get_parent().add_child(rock)
+	rock.position = position
+	if isThrow:
+		rock.elevation = 15
+		rock.velocity.x = 200 * facingDir.x
+		rock.velocity.y = 200 * facingDir.y
+		rock.acceleration.y = 30
+
+	if rock.has_method("on_player_place"):
+		rock.on_player_place()
 
 func action(act, just):
 	if !isAttackAnimating:
@@ -85,8 +107,19 @@ func action(act, just):
 				if gold > 0:
 					giveGold(-1)
 					get_parent().add_child(arrow)
+			[Constants.Equipment.Bomb, true]:
+				if gold > 0:
+					var bomb = Bomb.instance()
+					bomb.position.y -= 12
+					giveGold(5)
+					carry(bomb)
 			[Constants.Equipment.Shield, _]:
 				is_shielding = true
+
+func carry(object):
+	# TODO: add animation for idle with object
+	holding = object
+	add_child(object)
 
 func _physics_process (_delta):
 	vel = Vector2()

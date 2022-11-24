@@ -24,7 +24,7 @@ static func set_elevation(sprite, elevation):
 	var shadow = sprite.get_node("shadow")
 	var twidth = get_width(sprite)
 	var dynHeight = twidth / 2
-	shadow.offset.y = (5.5/8 + elevation) * dynHeight / shadow.scale.y
+	shadow.offset.y = (5.5/8) * dynHeight / shadow.scale.y + elevation
 
 static func create_shadow(sprite):
 	var sizeup = 1.0 / 3
