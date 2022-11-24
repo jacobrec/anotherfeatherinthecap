@@ -7,7 +7,8 @@ var maxHealth = 4 * 3
 var hp = 12
 var gold = 100
 var equipped_1 = Constants.Equipment.Sword
-var equipped_2 = Constants.Equipment.Shield
+#var equipped_2 = Constants.Equipment.Shield
+var equipped_2 = Constants.Equipment.Boomarang
 
 var moveSpeed : int = 250
 var interactDist : int = 12
@@ -21,6 +22,7 @@ var isAttackAnimating = false
 var is_shielding = false
 var Arrow = load("res://src/Arrow.tscn")
 var Bomb = load("res://src/Bomb.tscn")
+var Boomarang = load("res://src/Boomarang.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -113,6 +115,11 @@ func action(act, just):
 					bomb.position.y -= 12
 					giveGold(-5)
 					carry(bomb)
+			[Constants.Equipment.Boomarang, true]:
+				var boomarang = Boomarang.instance()
+				boomarang.velocity = facingDir
+				boomarang.position = position
+				get_parent().add_child(boomarang)
 			[Constants.Equipment.Shield, _]:
 				is_shielding = true
 
