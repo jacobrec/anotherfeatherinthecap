@@ -7,7 +7,7 @@ var maxHealth = 4 * 3
 var hp = 12
 var gold = 100
 var equipped_1 = Constants.Equipment.Sword
-var equipped_2 = Constants.Equipment.Bomb
+var equipped_2 = Constants.Equipment.Shield
 
 var moveSpeed : int = 250
 var interactDist : int = 12
@@ -111,7 +111,7 @@ func action(act, just):
 				if gold > 0:
 					var bomb = Bomb.instance()
 					bomb.position.y -= 12
-					giveGold(5)
+					giveGold(-5)
 					carry(bomb)
 			[Constants.Equipment.Shield, _]:
 				is_shielding = true
@@ -212,3 +212,6 @@ func lock_damage (timedelay):
 func giveGold(amount):
 	gold += amount
 	emit_signal("goldChanged", gold)
+
+func on_bomb_explode():
+	damage(4)

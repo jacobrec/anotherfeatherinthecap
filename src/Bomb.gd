@@ -19,6 +19,9 @@ func on_player_place():
 	has_shadow = false
 	var shadow = $AnimatedSprite.get_node("shadow")
 	$AnimatedSprite.remove_child(shadow)
+	for other in $ExplosionArea.get_overlapping_bodies():
+		if other.has_method("on_bomb_explode"):
+			other.on_bomb_explode()
 	yield(get_tree().create_timer(0.45),"timeout")
 	queue_free()
 

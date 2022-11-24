@@ -27,16 +27,18 @@ func on_collide (player):
 		else: # Played shielded, bounce back
 			pass # TODO: use same leap as attack
 
-func on_sword_hit(_player):
+func damage():
 	if not is_dead:
 		$AnimatedSprite.play("dead")
 		is_dead = true
 		yield(get_tree().create_timer(1),"timeout")
 		queue_free()
 
+func on_sword_hit(_player):
+	damage()
+
 func on_arrow_hit():
-	if not is_dead:
-		$AnimatedSprite.play("dead")
-		is_dead = true
-		yield(get_tree().create_timer(1),"timeout")
-		queue_free()
+	damage()
+
+func on_bomb_explode():
+	damage()
